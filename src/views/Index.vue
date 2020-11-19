@@ -25,6 +25,9 @@ export default {
     clearInterval(this.timer)
   },
   methods: {
+    /*
+      初始化定时任务
+     */
     init: function () {
       const timer = setInterval(() => {
         const beforeGetTimeStamp = (new Date()).getTime()
@@ -43,6 +46,9 @@ export default {
       // 赋值timer，便于销毁
       this.timer = timer
     },
+    /*
+      记录访问日志
+     */
     setLogs: function (res, getRequstTimeStamp, durationTime) {
       let logs = getLogs()
       if (!logs) {
@@ -52,6 +58,7 @@ export default {
       const timeStamp = new Date()
       timeStamp.setTime(getRequstTimeStamp)
       console.log(timeStamp.toUTCString())
+      // 初始化log
       const log = {
         getRequstTimeStamp: timeStamp.toUTCString(),
         status: res.status,
