@@ -1,5 +1,5 @@
-import { mount } from '@vue/test-utils'
-import { clearLocalStorage } from '@/utils/localStorage'
+import {mount} from '@vue/test-utils'
+import {clearLocalStorage} from '@/utils/localStorage'
 import Index from '@/views/Index.vue'
 
 beforeEach(() => {
@@ -14,5 +14,12 @@ describe('Index.vue', () => {
     expect(setInterval).toHaveBeenCalledTimes(1)
     jest.runAllTimers()
     expect(wrapper.find('.index').text().length > 0).toBe(true)
+  })
+
+  it('获取log', () => {
+    const wrapper = mount(Index)
+    wrapper.vm.getAPIResult().then(log => {
+      expect(log.status).toBe(200)
+    })
   })
 })
