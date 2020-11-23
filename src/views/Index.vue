@@ -20,7 +20,7 @@ export default {
   mounted () {
     this.setTimer()
   },
-  destroyed () {
+  beforeDestroy () {
     // 销毁timer
     clearInterval(this.timer)
   },
